@@ -218,6 +218,7 @@ bool preFunc(long llfi_index, unsigned opcode, unsigned my_reg_index,
 void injectFunc(long llfi_index, unsigned size, 
                 char *buf, unsigned my_reg_index, unsigned reg_pos, char* opcode_str) {
   fprintf(stderr, "MSG: injectFunc() has being called\n");
+  fprintf(stderr, "MSG(Hailong): fault has been injected into llfi_index =: %ld \n", llfi_index);
   if (! fiFlag) return;
   start_tracing_flag = TRACING_FI_RUN_FAULT_INSERTED; //Tell instTraceLib that we have injected a fault
 
@@ -281,26 +282,26 @@ void injectFunc(long llfi_index, unsigned size,
 	  //======== Add second corrupted regs QINING @MAR 27th===========
 	  //update the fi_cycle to the fi_second_cycle,
 	  // so later procedures can still use fi_cycle to print stat info
-	  if(config.fi_second_cycle != -1)
-	  {
-	  	config.fi_cycle = config.fi_second_cycle;
-	  	config.fi_second_cycle = -1;
-	  }
-          /*BEHROOZ: Add multiple corrupted regs*/
-          else
-          {
-              long long next_cycle = -1;
-              int index = 0;
-              for(index = 0; index < fi_next_cycles_count && next_cycle == -1; index++)
-              {
-                   if(config.fi_next_cycles[index] != -1)
-                   {
-                        next_cycle = config.fi_next_cycles[index];
-	                config.fi_cycle = next_cycle;
-	  	        config.fi_next_cycles[index] = -1;
-                   }                   
-              }
-          }
+	  // if(config.fi_second_cycle != -1)
+	  // {
+	  // 	config.fi_cycle = config.fi_second_cycle;
+	  // 	config.fi_second_cycle = -1;
+	  // }
+    //       /*BEHROOZ: Add multiple corrupted regs*/
+    //       else
+    //       {
+    //           long long next_cycle = -1;
+    //           int index = 0;
+    //           for(index = 0; index < fi_next_cycles_count && next_cycle == -1; index++)
+    //           {
+    //                if(config.fi_next_cycles[index] != -1)
+    //                {
+    //                     next_cycle = config.fi_next_cycles[index];
+	  //               config.fi_cycle = next_cycle;
+	  // 	        config.fi_next_cycles[index] = -1;
+    //                }                   
+    //           }
+    //       }
 	  //==============================================================
   	  injectFaultImpl(config.fi_type, llfi_index, size, fi_bit, buf);
   }

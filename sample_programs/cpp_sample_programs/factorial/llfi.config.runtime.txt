@@ -1,0 +1,2 @@
+fi_cycle=5
+fi_type=stuck_at_0

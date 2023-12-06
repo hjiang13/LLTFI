@@ -1,0 +1,92 @@
+/**
+ * instruction.def is a copy of Instruction.def in llvm.
+ * If there is any change in the opcode of Instructions.def, please update
+ * this file accordingly
+ */
+
+
+// Terminator Instructions - These instructions are used to terminate a basic
+// block of the program.   Every basic block must end with one of these
+// instructions for it to be a well formed basic block.
+HANDLE_INST ( 1, Ret          , ReturnInst,        0)
+HANDLE_INST ( 2, Br           , BranchInst,        0)
+HANDLE_INST ( 3, Switch       , SwitchInst,        0)
+HANDLE_INST ( 4, IndirectBr   , IndirectBrInst,    0)
+HANDLE_INST ( 5, Invoke       , InvokeInst,        0)
+HANDLE_INST ( 6, Resume       , ResumeInst,        0)
+HANDLE_INST ( 7, Unreachable  , UnreachableInst,   0)
+HANDLE_INST ( 8, CleanupRet   , CleanupReturnInst, 0)
+HANDLE_INST ( 9, CatchRet     , CatchReturnInst,   0)
+HANDLE_INST ( 10, CatchSwitch , CatchSwitchInst,   0)
+
+// Standard binary operators...
+HANDLE_INST (11, Add  , BinaryOperator,       0)
+HANDLE_INST (12, FAdd , BinaryOperator,       0)
+HANDLE_INST (13, Sub  , BinaryOperator,       0)
+HANDLE_INST (14, FSub , BinaryOperator,       0)
+HANDLE_INST (15, Mul  , BinaryOperator,       0)
+HANDLE_INST (16, FMul , BinaryOperator,       0)
+HANDLE_INST (17, UDiv , BinaryOperator,       0)
+HANDLE_INST (18, SDiv , BinaryOperator,       0)
+HANDLE_INST (19, FDiv , BinaryOperator,       0)
+HANDLE_INST (20, URem , BinaryOperator,       0)
+HANDLE_INST (21, SRem , BinaryOperator,       0)
+HANDLE_INST (22, FRem , BinaryOperator,       0)
+
+// Logical operators (integer operands)
+HANDLE_INST (23, Shl  , BinaryOperator,       0) // Shift left  (logical)
+HANDLE_INST (24, LShr , BinaryOperator,       0) // Shift right (logical)
+HANDLE_INST (25, AShr , BinaryOperator,       0) // Shift right (arithmetic)
+HANDLE_INST (26, And  , BinaryOperator,       0)
+HANDLE_INST (27, Or   , BinaryOperator,       0)
+HANDLE_INST (28, Xor  , BinaryOperator,       0)
+
+// Memory operators...
+HANDLE_INST (29, Alloca, AllocaInst,          0)  // Stack management
+HANDLE_INST (30, Load  , LoadInst,            0)  // Memory manipulation instrs
+HANDLE_INST (31, Store , StoreInst,           0)
+HANDLE_INST (32, GetElementPtr, GetElementPtrInst, 0)
+HANDLE_INST (33, Fence , FenceInst,           0)
+HANDLE_INST (34, AtomicCmpXchg , AtomicCmpXchgInst, 0)
+HANDLE_INST (35, AtomicRMW , AtomicRMWInst,   0)
+
+// Cast operators ...
+// NOTE: The order matters here because CastInst::isEliminableCastPair 
+// NOTE: (see Instructions.cpp) encodes a table based on this ordering.
+HANDLE_INST (36, Trunc   , TruncInst   ,        0)  // Truncate integers
+HANDLE_INST (37, ZExt    , ZExtInst    ,        0)  // Zero extend integers
+HANDLE_INST (38, SExt    , SExtInst    ,        0)  // Sign extend integers
+HANDLE_INST (39, FPToUI  , FPToUIInst  ,        0)  // floating point -> UInt
+HANDLE_INST (40, FPToSI  , FPToSIInst  ,        0)  // floating point -> SInt
+HANDLE_INST (41, UIToFP  , UIToFPInst  ,        0)  // UInt -> floating point
+HANDLE_INST (42, SIToFP  , SIToFPInst  ,        0)  // SInt -> floating point
+HANDLE_INST (43, FPTrunc , FPTruncInst ,        0)  // Truncate floating point
+HANDLE_INST (44, FPExt   , FPExtInst   ,        0)  // Extend floating point
+HANDLE_INST (45, PtrToInt, PtrToIntInst,        0)  // Pointer -> Integer
+HANDLE_INST (46, IntToPtr, IntToPtrInst,        0)  // Integer -> Pointer
+HANDLE_INST (47, BitCast , BitCastInst ,        0)  // Type cast
+HANDLE_INST (48, AddrSpaceCast, AddrSpaceCastInst, 0)  // addrspace cast
+
+// Funcletpad operators
+HANDLE_INST (49, CleanupPad , CleanupPadInst,   0)
+HANDLE_INST (50, CatchPad   , CatchPadInst  ,   0)
+
+// Other operators...
+HANDLE_INST (51, ICmp   , ICmpInst   ,         0)  // Integer comparison instruction
+HANDLE_INST (52, FCmp   , FCmpInst   ,         0)  // Floating point comparison instr.
+HANDLE_INST (53, PHI    , PHINode    ,         1)  // PHI node instruction
+HANDLE_INST (54, Call   , CallInst   ,         0)  // Call a function
+HANDLE_INST (55, Select , SelectInst ,         0)  // select instruction
+HANDLE_INST (56, UserOp1, Instruction,         0)  // May be used internally in a pass
+HANDLE_INST (57, UserOp2, Instruction,         0)  // Internal to passes only
+HANDLE_INST (58, VAArg  , VAArgInst,           0)  // vaarg instruction
+HANDLE_INST (59, ExtractElement, ExtractElementInst,   0)// extract from vector
+HANDLE_INST (60, InsertElement, InsertElementInst,     0)  // insert into vector
+HANDLE_INST (61, ShuffleVector, ShuffleVectorInst,     0)  // shuffle two vectors.
+HANDLE_INST (62, ExtractValue, ExtractValueInst,       0)// extract from aggregate
+HANDLE_INST (63, InsertValue, InsertValueInst,         0)  // insert into aggregate
+HANDLE_INST (64, LandingPad, LandingPadInst,           0)  // Landing pad instruction.
+
+#ifdef HANDLE_INST
+#undef HANDLE_INST
+#endif

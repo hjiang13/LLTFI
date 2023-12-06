@@ -6,7 +6,11 @@
 namespace llfi {
 void FIInstSelector::getFIInsts(Module &M, std::set<Instruction*> *fiinsts) {
   getInitFIInsts(M, fiinsts);
-
+  for (std::set<Instruction* >::const_iterator inst_it = fiinsts->begin();
+       inst_it != fiinsts->end(); ++inst_it) {
+         Instruction *inst = *inst_it;
+        //errs() << "The opCode of set of fiinsts of FIInstSelectors is: " << inst->getOpcode() << "\n";
+  }
   std::set<Instruction* > bs;
   std::set<Instruction* > fs;
   // must do both of the computation on the fiinsts, and update
@@ -30,6 +34,8 @@ void FIInstSelector::getInitFIInsts(Module &M,
         Instruction *inst = &(*f_it);
         if (isInstFITarget(inst)) {
           fiinsts->insert(inst);
+          //errs() << "The set of fiinsts are:"<< inst << "\n";
+          //errs() << "The opcode of fiinst is:" << inst->getOpcode() << "\n";
         }
       }
     }  

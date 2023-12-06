@@ -10,8 +10,9 @@ using namespace llvm;
 namespace llfi {
 
 static cl::list< std::string > injecttoindex("injecttoindex", 
-    cl::desc("Inject into the specified LLFI index"), 
-    cl::ZeroOrMore);
+   cl::desc("Inject into the specified LLFI index"), 
+   cl::ZeroOrMore);
+
 
 /**
  * LLFI Index instruction selector selects instruction of certain indices
@@ -20,6 +21,9 @@ class LLFIIndexFIInstSelector: public HardwareFIInstSelector {
  private:
   virtual bool isInstFITarget(Instruction *inst) {
     long llfiindex = getLLFIIndexofInst(inst);
+    
+    //errs() << "Hailong: llfiindex = " << llfiindex << "\n";
+    //errs() << "Hailong: injecttoindex.size() =  " << injecttoindex.size() << "\n";
     for (unsigned i = 0; i != injecttoindex.size(); ++i)
       if (atol(injecttoindex[i].c_str()) == llfiindex)
         return true;

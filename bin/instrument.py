@@ -37,7 +37,7 @@ llcbin = os.path.join(llvm_paths.LLVM_DST_ROOT, "bin/llc")
 llvmgcc = os.path.join(llvm_paths.LLVM_GXX_BIN_DIR, "clang")
 llvmgxx = os.path.join(llvm_paths.LLVM_GXX_BIN_DIR, "clang++")
 llfilinklib = os.path.join(script_path, "../runtime_lib")
-defaultlinklibs = ['-lpthread']
+defaultlinklibs = ['-lpthread', '-lm']
 prog = os.path.basename(sys.argv[0])
 # basedir is assigned in parseArgs(args)
 basedir = ""
@@ -152,8 +152,11 @@ def checkInputYaml():
   
   #Check for input.yaml's correct formmating
   try:
-    doc = yaml.load(f)
+    print ("Try to load input.yaml")
+    doc = yaml.load(f, Loader = yaml.FullLoader)
+    #doc = yaml.load(f)
     f.close()
+    print ("input.yaml file has been loaded successfully")
     verbosePrint(yaml.dump(doc), options["verbose"])
   except:
     print("Error: input.yaml is not formatted in proper YAML (reminder: use spaces, not tabs)")
@@ -186,6 +189,7 @@ def readCompileOption():
     print(("\n\nERROR: Please include an 'instSelMethod' key value pair under compileOption in input.yaml.\n"))
     exit(1)
   else:
+    print ("Hailong: 'instSelMethod' key value pair is under compileOption in input.yaml.\n")
     compileOptions = []
     validMethods = ["insttype", "funcname", "customInstselector"]
     # Generate list of instruction selection methods
@@ -202,6 +206,7 @@ def readCompileOption():
         compileOptions.append("-%s" % (str(methodName)))
     #Select by custom instruction 
     elif methodName == "customInstselector":
+      print ("Hailong: inst sel method name is customInstselector")
       compileOptions = ['-custominstselector']
       
     # Ensure that 'include' is specified at least
@@ -213,6 +218,7 @@ def readCompileOption():
     # Parse all options for current method
     custom_instselector_defined = False
     for attr in list(method[methodName].keys()):
+      print("Hailong: the attr in list(method[methodName].keys()) is " + attr + "\n")
       if(attr == "include" or attr == "exclude"):
         prefix = "-%s" % (str(attr))
         if methodName == "insttype":
@@ -235,6 +241,7 @@ def readCompileOption():
         compileOptions.extend(opts)
       elif(attr == "options"):
         opts = [opt for opt in method[methodName]["options"]]
+        print("Hailong options under include is: " + opts[0] + "\n")
         compileOptions.extend(opts)
 
   ###Register selection method

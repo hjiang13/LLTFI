@@ -8,6 +8,8 @@ include_directories(${LLVM_PASSES_DIRS_LLFI})
 add_llvm_library(llfi-passes MODULE
   SampleFIInstSelector.cpp
   SampleFIRegSelector.cpp
+
+
   SoftwareFailureAutoScanPass.cpp
   HardwareFailureAutoScanPass.cpp
   MainGraphInstSelector.cpp
@@ -25,11 +27,13 @@ add_llvm_library(llfi-passes MODULE
   core/GenLLFIIndexPass.cpp
   core/ProfilingPass.cpp
   core/RegLocBasedFIRegSelector.cpp
+  core/LoopInfoPass90.cpp
 
   hardware_failures/FuncNameFIInstSelector.cpp
   hardware_failures/LLFIIndexFIInstSelector.cpp
   hardware_failures/InstTypeFIInstSelector.cpp
   
+# hardware_failures/loopConditionFIInstSelector.cpp
 #  software_failures/_Timing_HighFrequentEventSelector.cpp
 #  software_failures/_SoftwareFaultRegSelectors.cpp
   

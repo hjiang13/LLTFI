@@ -1,0 +1,78 @@
+
+
+Start of a pass
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %7, metadata !34, metadata !DIExpression()), !dbg !35, !llfi_index !36
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %7, metadata !34, metadata !DIExpression()), !dbg !35, !llfi_index !36does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %6, metadata !31, metadata !DIExpression()), !dbg !32, !llfi_index !33
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %6, metadata !31, metadata !DIExpression()), !dbg !32, !llfi_index !33does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i8*** %5, metadata !28, metadata !DIExpression()), !dbg !29, !llfi_index !30
+The selected instruction   call void @llvm.dbg.declare(metadata i8*** %5, metadata !28, metadata !DIExpression()), !dbg !29, !llfi_index !30does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %4, metadata !24, metadata !DIExpression()), !dbg !25, !llfi_index !26
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %4, metadata !24, metadata !DIExpression()), !dbg !25, !llfi_index !26does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 0, i32* %3, align 4, !llfi_index !22
+The selected instruction   store i32 0, i32* %3, align 4, !llfi_index !22does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %0, i32* %4, align 4, !llfi_index !23
+The selected instruction   store i32 %0, i32* %4, align 4, !llfi_index !23does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i8** %1, i8*** %5, align 8, !llfi_index !27
+The selected instruction   store i8** %1, i8*** %5, align 8, !llfi_index !27does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %8, metadata !37, metadata !DIExpression()), !dbg !38, !llfi_index !39
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %8, metadata !37, metadata !DIExpression()), !dbg !38, !llfi_index !39does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %12, i32* %8, align 4, !dbg !46, !llfi_index !47
+The selected instruction   store i32 %12, i32* %8, align 4, !dbg !46, !llfi_index !47does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 1, i32* %7, align 4, !dbg !48, !llfi_index !49
+The selected instruction   store i32 1, i32* %7, align 4, !dbg !48, !llfi_index !49does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 1, i32* %6, align 4, !dbg !50, !llfi_index !52
+The selected instruction   store i32 1, i32* %6, align 4, !dbg !50, !llfi_index !52does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br label %13, !dbg !53, !llfi_index !54
+The selected instruction   br label %13, !dbg !53, !llfi_index !54does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br i1 %16, label %17, label %24, !dbg !62, !llfi_index !63
+The selected instruction   br i1 %16, label %17, label %24, !dbg !62, !llfi_index !63does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %20, i32* %7, align 4, !dbg !71, !llfi_index !72
+The selected instruction   store i32 %20, i32* %7, align 4, !dbg !71, !llfi_index !72does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br label %21, !dbg !73, !llfi_index !74
+The selected instruction   br label %21, !dbg !73, !llfi_index !74does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %23, i32* %6, align 4, !dbg !75, !llfi_index !78
+The selected instruction   store i32 %23, i32* %6, align 4, !dbg !75, !llfi_index !78does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br label %13, !dbg !79, !llvm.loop !80, !llfi_index !83
+The selected instruction   br label %13, !dbg !79, !llvm.loop !80, !llfi_index !83does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   ret i32 %27, !dbg !88, !llfi_index !90
+The selected instruction   ret i32 %27, !dbg !88, !llfi_index !90does not have any valid registers for fault injection
+
+
+Start of a pass
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %7, metadata !34, metadata !DIExpression()), !dbg !35, !llfi_index !36
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %7, metadata !34, metadata !DIExpression()), !dbg !35, !llfi_index !36does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %6, metadata !31, metadata !DIExpression()), !dbg !32, !llfi_index !33
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %6, metadata !31, metadata !DIExpression()), !dbg !32, !llfi_index !33does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i8*** %5, metadata !28, metadata !DIExpression()), !dbg !29, !llfi_index !30
+The selected instruction   call void @llvm.dbg.declare(metadata i8*** %5, metadata !28, metadata !DIExpression()), !dbg !29, !llfi_index !30does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %4, metadata !24, metadata !DIExpression()), !dbg !25, !llfi_index !26
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %4, metadata !24, metadata !DIExpression()), !dbg !25, !llfi_index !26does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 0, i32* %3, align 4, !llfi_index !22
+The selected instruction   store i32 0, i32* %3, align 4, !llfi_index !22does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %0, i32* %4, align 4, !llfi_index !23
+The selected instruction   store i32 %0, i32* %4, align 4, !llfi_index !23does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i8** %1, i8*** %5, align 8, !llfi_index !27
+The selected instruction   store i8** %1, i8*** %5, align 8, !llfi_index !27does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   call void @llvm.dbg.declare(metadata i32* %8, metadata !37, metadata !DIExpression()), !dbg !38, !llfi_index !39
+The selected instruction   call void @llvm.dbg.declare(metadata i32* %8, metadata !37, metadata !DIExpression()), !dbg !38, !llfi_index !39does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %12, i32* %8, align 4, !dbg !46, !llfi_index !47
+The selected instruction   store i32 %12, i32* %8, align 4, !dbg !46, !llfi_index !47does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 1, i32* %7, align 4, !dbg !48, !llfi_index !49
+The selected instruction   store i32 1, i32* %7, align 4, !dbg !48, !llfi_index !49does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 1, i32* %6, align 4, !dbg !50, !llfi_index !52
+The selected instruction   store i32 1, i32* %6, align 4, !dbg !50, !llfi_index !52does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br label %13, !dbg !53, !llfi_index !54
+The selected instruction   br label %13, !dbg !53, !llfi_index !54does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br i1 %16, label %17, label %24, !dbg !62, !llfi_index !63
+The selected instruction   br i1 %16, label %17, label %24, !dbg !62, !llfi_index !63does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %20, i32* %7, align 4, !dbg !71, !llfi_index !72
+The selected instruction   store i32 %20, i32* %7, align 4, !dbg !71, !llfi_index !72does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br label %21, !dbg !73, !llfi_index !74
+The selected instruction   br label %21, !dbg !73, !llfi_index !74does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   store i32 %23, i32* %6, align 4, !dbg !75, !llfi_index !78
+The selected instruction   store i32 %23, i32* %6, align 4, !dbg !75, !llfi_index !78does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   br label %13, !dbg !79, !llvm.loop !80, !llfi_index !83
+The selected instruction   br label %13, !dbg !79, !llvm.loop !80, !llfi_index !83does not have any valid registers for fault injection
+LLFI cannot inject faults in destination reg of   ret i32 %27, !dbg !88, !llfi_index !90
+The selected instruction   ret i32 %27, !dbg !88, !llfi_index !90does not have any valid registers for fault injection

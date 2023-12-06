@@ -80,20 +80,32 @@ bool ProfilingPass::runOnModule(Module &M) {
     Instruction *insertptr = getInsertPtrforRegsofInst(fi_reg, fi_inst);
 
     // function declaration
-    FunctionCallee profilingfunc = getLLFILibProfilingFunc(M);
+    FunctionCallee profilingfunc = getLLFILibProfilingFunc(M); // return doProfiling()
 
     // prepare for the calling argument and call the profiling function
-    std::vector<Value*> profilingarg(1);
+    std::vector<Value*> profilingarg(2);
     const IntegerType* itype = IntegerType::get(context, 32);
 
     //LLVM 3.3 Upgrading
     IntegerType* itype_non_const = const_cast<IntegerType*>(itype);
     Value* opcode = ConstantInt::get(itype_non_const, fi_inst->getOpcode());
     profilingarg[0] = opcode; 
+    
+    //const IntegerType* itype = IntegerType::get(context, 32);
+
+    //LLVM 3.3 Upgrading
+    //IntegerType* itype_non_const = const_cast<IntegerType*>(itype);
+    Value* index = ConstantInt::get(itype_non_const, getLLFIIndexofInst(fi_inst));
+    profilingarg[1] = index;
     ArrayRef<Value*> profilingarg_array_ref(profilingarg);
 
     CallInst::Create(profilingfunc, profilingarg_array_ref,
-                     "", insertptr);
+                     "", insertptr); 
+    //CallInst::Create(profilingfunc, profilingarg_array_ref,
+    //                 "", insertptr);
+
+      
+    // add index argument
   }
 
   //BEHROOZ: 
@@ -129,9 +141,9 @@ void ProfilingPass::addEndProfilingFuncCall(Module &M) {
 
 FunctionCallee ProfilingPass::getLLFILibProfilingFunc(Module &M) {
   LLVMContext &context = M.getContext();
-  std::vector<Type*> paramtypes(1);
+  std::vector<Type*> paramtypes(2);
   paramtypes[0] = Type::getInt32Ty(context);
-
+  paramtypes[1] = Type::getInt32Ty(context);
   // LLVM 3.3 Upgrading
   ArrayRef<Type*> paramtypes_array_ref(paramtypes);
 

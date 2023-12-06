@@ -55,6 +55,7 @@ std::vector<std::string> FaultInjectorManager::getInjectorNamesForType(std::stri
 
 extern "C" void injectFaultImpl(const char *fi_type, long llfi_index, 
                                 unsigned size, unsigned fi_bit, char *buf) {
+  std::cerr << "Start function 'injectFaultImpl' " << std::endl;
   FaultInjectorManager *m = FaultInjectorManager::getFaultInjectorManager();
   FaultInjector *fi = m->getFaultInjector(fi_type);
   fi->injectFault(llfi_index, size, fi_bit, buf);

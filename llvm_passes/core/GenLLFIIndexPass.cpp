@@ -31,6 +31,7 @@ bool GenLLFIIndexPass::runOnModule(Module &M) {
            ++f_it) {
         currinst = &(*f_it);
         setLLFIIndexofInst(currinst);
+        //errs()<< "Current instruction in llfi index generation function is:" << currinst <<"\n";
       }
     }
   }

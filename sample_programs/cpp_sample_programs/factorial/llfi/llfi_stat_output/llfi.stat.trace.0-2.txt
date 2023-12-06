@@ -1,0 +1,11 @@
+#TraceStartInstNumber: 65
+ID: 27	OPCode: load	Value: 000002d0
+ID: 28	OPCode: load	Value: 00000007
+ID: 29	OPCode: mul	Value: 000013b0
+ID: 32	OPCode: load	Value: 00000007
+ID: 33	OPCode: add	Value: 00000008
+ID: 23	OPCode: load	Value: 00000008
+ID: 24	OPCode: load	Value: 00000006
+ID: 36	OPCode: load	Value: 000013b0
+ID: 37	OPCode: call	Value: 00000005
+ID: 38	OPCode: load	Value: 00000000

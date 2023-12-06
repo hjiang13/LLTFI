@@ -111,6 +111,9 @@ void Controller::getOpcodeListofFIInsts(std::set<unsigned> *fi_opcode_set) {
       NameOpcodeMap::iterator loc = fullnameopcodemap.find(includeinst[i]);
       if (loc != fullnameopcodemap.end()) {
         fi_opcode_set->insert(loc->second);
+        //Print fi_opcode_set
+        errs() << "fi_opcode_set read from input.yaml is: " << includeinst[i]
+          <<"\n";
       } else {
         errs() << "ERROR: Invalid include instruction type: " << includeinst[i]
             << "\n";

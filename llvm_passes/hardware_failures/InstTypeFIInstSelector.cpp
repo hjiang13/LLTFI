@@ -6,6 +6,7 @@
 namespace llfi {
 bool InstTypeFIInstSelector::isInstFITarget(Instruction *inst) {
   unsigned opcode = inst->getOpcode();
+  Function *funct = inst->getParent() -> getParent();
   if (opcodelist->find(opcode) != opcodelist->end()) {
     return true;
   }

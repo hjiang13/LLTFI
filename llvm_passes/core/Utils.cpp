@@ -1,6 +1,13 @@
 
 #include "Utils.h"
+#include <iostream>
+#include <fstream>
+#include "json.hpp"
+#include <cstdlib>
+#include <sstream>
 
+using namespace std;
+using json = nlohmann::json;
 namespace llfi {
 
 std::string demangleFuncName(std::string func) {
@@ -168,6 +175,21 @@ void setLLFIIndexofInst(Instruction *inst) {
   ArrayRef<Metadata *> llfiarr(llfiindex);
   MDNode *mdnode = MDNode::get(context, llfiarr);
   inst->setMetadata("llfi_index", mdnode);
+  //errs() << "To set LLFI index of Inst:" << &inst << " , and fi_index is: " << fi_index << "\n";
+  ofstream jsonFile ("./fiindexLinenumberMap.json", ios_base::out | ios_base::app);
+  json j;
+
+  llvm::DebugLoc dbgloc = inst->getDebugLoc();
+  if(dbgloc){
+    errs() << " and is in source code line: " << dbgloc.getLine() << "\n";
+    j[to_string(fi_index)]["Function:"] = func->getName();
+    j[to_string(fi_index)]["fi_index_LineNumber"] = to_string(dbgloc.getLine()) ;
+    }
+  //errs() << "fi_index: " << fi_index <<" is in Function: " << func->getName() <<"\n";
+  
+  //to get the source code line number of this instruction 
+  jsonFile << std::setw(4) << j << std::endl;
+  
 }
 
 void genFullNameOpcodeMap(

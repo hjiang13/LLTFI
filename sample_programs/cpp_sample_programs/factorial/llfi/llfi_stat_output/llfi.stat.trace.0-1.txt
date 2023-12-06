@@ -1,0 +1,4 @@
+#TraceStartInstNumber: 58
+ID: 36	OPCode: load	Value: 00000078
+ID: 37	OPCode: call	Value: 00000004
+ID: 38	OPCode: load	Value: 00000000
