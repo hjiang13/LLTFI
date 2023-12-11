@@ -6,10 +6,14 @@
 namespace llfi {
 void FIInstSelector::getFIInsts(Module &M, std::set<Instruction*> *fiinsts) {
   getInitFIInsts(M, fiinsts);
+  //   std::set<Instruction*>::iterator it;
+  // for (it = fiinstset.begin(); it != fiinstset.end(); ++it){
+  //   errs() << "The initial fault injection instruction: " << *(it) << "\n";
+  // }
   for (std::set<Instruction* >::const_iterator inst_it = fiinsts->begin();
        inst_it != fiinsts->end(); ++inst_it) {
          Instruction *inst = *inst_it;
-        //errs() << "The opCode of set of fiinsts of FIInstSelectors is: " << inst->getOpcode() << "\n";
+        errs() << "The opCode of set of fiinsts " << *inst << " of FIInstSelectors is: " << inst->getOpcode() << "\n";
   }
   std::set<Instruction* > bs;
   std::set<Instruction* > fs;
@@ -19,9 +23,10 @@ void FIInstSelector::getFIInsts(Module &M, std::set<Instruction*> *fiinsts) {
     getBackwardTraceofInsts(fiinsts, &bs);
   if (includeforwardtrace)
     getForwardTraceofInsts(fiinsts, &fs);
-
-  fiinsts->insert(bs.begin(), bs.end());
-  fiinsts->insert(fs.begin(), fs.end());
+  // Hailong: I have no idea why we need to insert the context instructions.
+  //Trying to comment this out to see if the fault could be injected exacatly to the target instruction.
+  // fiinsts->insert(bs.begin(), bs.end());
+  // fiinsts->insert(fs.begin(), fs.end());
 }
 
 void FIInstSelector::getInitFIInsts(Module &M, 

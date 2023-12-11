@@ -24,10 +24,15 @@ class LLFIIndexFIInstSelector: public HardwareFIInstSelector {
     
     //errs() << "Hailong: llfiindex = " << llfiindex << "\n";
     //errs() << "Hailong: injecttoindex.size() =  " << injecttoindex.size() << "\n";
-    for (unsigned i = 0; i != injecttoindex.size(); ++i)
-      if (atol(injecttoindex[i].c_str()) == llfiindex)
+    for (unsigned i = 0; i != injecttoindex.size(); ++i){
+      //errs() << "Hailong: atol(injecttoindex[i].c_str()) =" << atol(injecttoindex[i].c_str()) << " \n";
+      if (atol(injecttoindex[i].c_str()) == llfiindex){
+        errs() << "Hailong: atol(injecttoindex[i].c_str()) =" << atol(injecttoindex[i].c_str()) << " \n";
         return true;
+      }
+        
     return false;
+    }
   }
  public:
   virtual void getCompileTimeInfo(std::map<std::string, std::string>& info){

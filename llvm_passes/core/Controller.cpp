@@ -241,6 +241,10 @@ void Controller::init(Module &M) {
   // select fault injection instructions
   std::set<Instruction*> fiinstset;
   fiinstselector->getFIInsts(M, &fiinstset);
+  std::set<Instruction*>::iterator it;
+  for (it = fiinstset.begin(); it != fiinstset.end(); ++it){
+    errs() << "Selected fault injection instruction: " << *(it) << "\n";
+  }
   
   // select fault injection registers
   firegselector->getFIInstRegMap(&fiinstset, &fi_inst_regs_map);
@@ -252,9 +256,10 @@ Controller::~Controller() {
 }
 
 void Controller::dump() const {
+
   for (std::map<Instruction*, std::list< int > *>::const_iterator inst_it =
        fi_inst_regs_map.begin(); inst_it != fi_inst_regs_map.end(); ++inst_it) {
-    errs() << "Selected instruction " << *(inst_it->first) << "\nRegs:\n";
+    errs() << "Selected fault injection registers " << *(inst_it->first) << "\nRegs:\n";
     for (std::list<int>::const_iterator reg_it = inst_it->second->begin();
          reg_it != inst_it->second->end(); ++reg_it) {
       if(*reg_it == DST_REG_POS)  errs() << "\t" << *(inst_it->first) << "\n";
@@ -265,8 +270,10 @@ void Controller::dump() const {
 }
 
 Controller *Controller::getInstance(Module &M) {
-  if (ctrl == NULL)
+  if (ctrl == NULL){
     ctrl = new Controller(M);
+    ctrl->dump();
+    }
   return ctrl;
 }
 }

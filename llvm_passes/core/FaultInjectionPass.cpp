@@ -40,12 +40,14 @@ std::string FaultInjectionPass::getFIFuncNameforType(const Type *type) {
     funcname += intToString(ficount);
     fi_rettype_funcname_map[type] = funcname;
   }
+  errs() << "Hailong: funcname is: " << funcname << "\n";
   return funcname;
 }
 
 void FaultInjectionPass::insertInjectionFuncCall(
     std::map<Instruction*, std::list< int >* > *inst_regs_map, Module &M) {
-
+  
+  errs() << "Hailong: This is function 'insertInjectionFuncCall'; \n";    
   for (std::map<Instruction*, std::list< int >* >::iterator inst_reg_it =
        inst_regs_map->begin(); inst_reg_it != inst_regs_map->end(); 
        ++inst_reg_it) {
@@ -75,6 +77,7 @@ void FaultInjectionPass::insertInjectionFuncCall(
 
     unsigned reg_index = 0;
     unsigned total_reg_num = fi_reg_pos_list->size();
+    errs() << "Total register number, total_reg_num is "<< fi_reg_pos_list->size() <<'\n';
     for (std::list<int>::iterator reg_pos_it = fi_reg_pos_list->begin(); 
          reg_pos_it != fi_reg_pos_list->end(); ++reg_pos_it, ++reg_index) {
       if(isa<GetElementPtrInst>(fi_inst)){
@@ -151,6 +154,7 @@ void FaultInjectionPass::insertInjectionFuncCall(
       Instruction *insertptr = getInsertPtrforRegsofInst(fi_reg, fi_inst);
       Instruction *ficall =
           CallInst::Create(injectfunc, args_array_ref, "fi", insertptr);
+      errs() << "Hailong: sets the instruction metadata to fi_inst: " << fi_inst << " to " << fi_reg << "\n";
       setInjectFaultInst(fi_reg, fi_inst, ficall); // sets the instruction metadata
 
       // redirect the data dependencies
@@ -276,6 +280,7 @@ bool FaultInjectionPass::runOnModule(Module &M) {
   std::map<Instruction*, std::list< int >* > *fi_inst_regs_map;
   Controller *ctrl = Controller::getInstance(M);
   ctrl->getFIInstRegsMap(&fi_inst_regs_map);
+  errs() << "Hailong: to call function insertInjectionFuncCall, inpout is: " << fi_inst_regs_map << "\n";
   insertInjectionFuncCall(fi_inst_regs_map, M);
 
   finalize(M);

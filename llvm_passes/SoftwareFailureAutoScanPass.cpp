@@ -44,18 +44,18 @@ namespace llfi{
                 // errs()<<"# start on: "<<*name<<"\n";
                 FIInstSelectorManager *fiinstselector = new FIInstSelectorManager;
                 fiinstselector->addSelector(im->getCustomInstSelector(*name));
-                // errs()<<"# inst selector done on: "<<*name<<"\n";
+                errs()<<"# inst selector done on: "<<*name<<"\n";
                 FIRegSelector* firegselector = rm->getCustomRegSelector(*name);
                 // errs()<<"# reg selector done on: "<<*name<<"\n";
                 // select fault injection instructions
                 std::set<Instruction*> fiinstset;
                 fiinstselector->getFIInsts(M, &fiinstset);
-                // errs()<<"# size of inst set: "<<fiinstset.size()<<"\n";
+                errs()<<"# size of inst set: "<<fiinstset.size()<<"\n";
                 std::map<Instruction*, std::list< int >* > fi_inst_regs_map;
                 // select fault injection registers
                 firegselector->getFIInstRegMap(&fiinstset, &fi_inst_regs_map);
                 delete fiinstselector;
-                // errs()<<"# collection done on: "<<*name<<"\n";
+                errs()<<"# collection done on: "<<*name<<"\n";
                 bool not_empty = false;
                 for(std::map<Instruction*, std::list<int>* >::iterator MI = fi_inst_regs_map.begin();
                     MI != fi_inst_regs_map.end(); MI++){
